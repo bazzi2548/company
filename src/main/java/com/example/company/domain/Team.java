@@ -32,4 +32,8 @@ public class Team {
         }
         memberCount = 0;
     }
+
+    public void setMemberCount() {
+        this.memberCount++;
+    }
 }

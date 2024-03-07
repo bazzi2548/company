@@ -5,6 +5,8 @@ import com.example.company.dto.request.TeamRequest;
 import com.example.company.repository.TeamRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TeamService {
 
@@ -16,5 +18,9 @@ public class TeamService {
 
     public void saveTeam(TeamRequest request) {
         teamRepository.save(new Team(request));
+    }
+
+    public List<Team> getTeam() {
+        return teamRepository.findAll();
     }
 }
