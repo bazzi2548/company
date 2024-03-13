@@ -1,11 +1,13 @@
 package com.example.company.service;
 
 import com.example.company.domain.Team;
-import com.example.company.dto.request.TeamRequest;
+import com.example.company.dto.request.team.TeamRequest;
+import com.example.company.dto.response.team.TeamInfoResponse;
 import com.example.company.repository.TeamRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TeamService {
@@ -20,7 +22,10 @@ public class TeamService {
         teamRepository.save(new Team(request));
     }
 
-    public List<Team> getTeam() {
-        return teamRepository.findAll();
+    public List<TeamInfoResponse> getTeam() {
+        return teamRepository.findAll()
+                .stream()
+                .map(TeamInfoResponse::new)
+                .collect(Collectors.toList());
     }
 }

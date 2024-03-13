@@ -1,6 +1,6 @@
 package com.example.company.domain;
 
-import com.example.company.dto.request.TeamRequest;
+import com.example.company.dto.request.team.TeamRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 

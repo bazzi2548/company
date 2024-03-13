@@ -1,6 +1,6 @@
 package com.example.company.domain;
 
-import com.example.company.dto.request.MemberRequest;
+import com.example.company.dto.request.member.MemberRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -18,7 +18,7 @@ public class Member {
     @Column(length = 30)
     private String teamName;
     @Column(length = 30, nullable = false)
-    private String role;
+    private String role; // Enum으로 Role 만들기(확장에 유연), @Enumerated 공부
     @Column(nullable = false)
     private LocalDate birthday;
     @Column(nullable = false)
