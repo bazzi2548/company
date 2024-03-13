@@ -1,7 +1,8 @@
 package com.example.company.controller;
 
 import com.example.company.domain.Team;
-import com.example.company.dto.request.TeamRequest;
+import com.example.company.dto.request.team.TeamRequest;
+import com.example.company.dto.response.team.TeamInfoResponse;
 import com.example.company.service.TeamService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +25,8 @@ public class TeamController {
         teamService.saveTeam(request);
     }
 
-    @GetMapping("/api/team")
-    public List<Team> getTeam() {
+    @GetMapping("/api/team") // 엔티티를 직접 반환받는건 위험, DTO를 써서 리스트 받아보자
+    public List<TeamInfoResponse> getTeam() {
         return teamService.getTeam();
     }
 }

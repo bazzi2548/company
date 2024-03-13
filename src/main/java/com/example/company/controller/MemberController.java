@@ -1,7 +1,7 @@
 package com.example.company.controller;
 
-import com.example.company.domain.Member;
-import com.example.company.dto.request.MemberRequest;
+import com.example.company.dto.request.member.MemberRequest;
+import com.example.company.dto.response.member.MemberInfoResponse;
 import com.example.company.service.MemberService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+// TemporalAdjusters키워드
 
 @RestController
 public class MemberController {
@@ -25,7 +27,7 @@ public class MemberController {
     }
 
     @GetMapping("/api/member")
-    public List<Member> getTeam(){
+    public List<MemberInfoResponse> getTeam(){
         return memberService.getTeam();
     }
 }
