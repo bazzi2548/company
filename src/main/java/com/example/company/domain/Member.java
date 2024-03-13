@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -12,6 +14,7 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     private Long id;
     @Column(length = 30, nullable = false)
     private String name;
@@ -23,6 +26,8 @@ public class Member {
     private LocalDate birthday;
     @Column(nullable = false)
     private LocalDate workStartDate;
+    @OneToMany(mappedBy = "member")
+    private List<Attendance> attendances = new ArrayList<>();
 
     protected Member() {
     }
