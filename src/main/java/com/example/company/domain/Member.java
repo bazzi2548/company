@@ -20,7 +20,7 @@ public class Member {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Team teamId;
+    private Team team;
 
     @Column(length = 30, nullable = false)
     @Enumerated(value = EnumType.STRING)
@@ -49,7 +49,7 @@ public class Member {
     }
 
     public void setTeam(Team team){
-        this.teamId = team;
+        this.team = team;
         team.getMembers().add(this);
         team.setMemberCount();
     }
