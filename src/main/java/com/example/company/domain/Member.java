@@ -20,6 +20,7 @@ public class Member {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
     private Team team;
 
     @Column(length = 30, nullable = false)

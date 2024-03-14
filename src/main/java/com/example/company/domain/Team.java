@@ -24,7 +24,7 @@ public class Team {
 
     private int memberCount;
 
-    @OneToMany(mappedBy = "teamId")
+    @OneToMany(mappedBy = "team")
     private List<Member> members = new ArrayList<>();
 
     protected Team() {
