@@ -21,7 +21,8 @@ public class Member {
     @Column(length = 30)
     private String teamName;
     @Column(length = 30, nullable = false)
-    private String role; // Enum으로 Role 만들기(확장에 유연), @Enumerated 공부
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
     @Column(nullable = false)
     private LocalDate birthday;
     @Column(nullable = false)
@@ -41,10 +42,9 @@ public class Member {
             teamName = request.getTeamName();
         }
 
-        if (request.getRole().equals("MEMBER") || request.getRole().equals("MANAGER")) {
+        if (request.getRole() == Role.MEMBER || request.getRole() == Role.MANAGER) {
             role = request.getRole();
         } else {
-            System.out.println(request.getRole());
             throw new IllegalArgumentException();
         }
 

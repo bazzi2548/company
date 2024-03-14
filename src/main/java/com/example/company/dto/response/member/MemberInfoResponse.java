@@ -1,6 +1,7 @@
 package com.example.company.dto.response.member;
 
 import com.example.company.domain.Member;
+import com.example.company.domain.Role;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 public class MemberInfoResponse {
     private String name;
     private String teamName;
-    private String role;
+    private Role role;
     private LocalDate birthDay;
     private LocalDate workStartDate;
 
