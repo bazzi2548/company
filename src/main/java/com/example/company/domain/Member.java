@@ -38,12 +38,6 @@ public class Member {
     public Member(MemberRequest request) {
         name = request.getName();
 
-//        if (request.getTeamId() == null) {
-//            teamId = null;
-//        } else {
-//            teamId = request.getTeamId();
-//        }
-
         if (request.getRole() == Role.MEMBER || request.getRole() == Role.MANAGER) {
             role = request.getRole();
         } else {
