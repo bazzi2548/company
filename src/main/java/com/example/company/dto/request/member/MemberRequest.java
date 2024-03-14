@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class MemberRequest {
 
     private String name;
-    private String teamName;
+    private Long teamId;
     private Role role;
     private LocalDate birthday;
     private LocalDate workStartDate;

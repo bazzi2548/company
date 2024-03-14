@@ -25,11 +25,14 @@ public class MemberService {
 
     @Transactional
     public void saveMember(MemberRequest request) {
-        if (request.getTeamName() != null && !(request.getTeamName().isEmpty())) {
-            Team team = teamRepository.findByName(request.getTeamName());
-            team.setMemberCount();
+        Member member = new Member(request);
+
+        if (request.getTeamId() != null) {
+            Team team = teamRepository.findById(request.getTeamId())
+                    .orElseThrow(IllegalArgumentException::new);
+            member.setTeam(team);
         }
-        memberRepository.save(new Member(request));
+        memberRepository.save(member);
     }
 
     public List<MemberInfoResponse> getTeam() {

@@ -18,8 +18,10 @@ public class Member {
     private Long id;
     @Column(length = 30, nullable = false)
     private String name;
-    @Column(length = 30)
-    private String teamName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Team teamId;
+
     @Column(length = 30, nullable = false)
     @Enumerated(value = EnumType.STRING)
     private Role role;
@@ -36,11 +38,11 @@ public class Member {
     public Member(MemberRequest request) {
         name = request.getName();
 
-        if (request.getTeamName() == null || request.getTeamName().isBlank()) {
-            teamName = null;
-        } else {
-            teamName = request.getTeamName();
-        }
+//        if (request.getTeamId() == null) {
+//            teamId = null;
+//        } else {
+//            teamId = request.getTeamId();
+//        }
 
         if (request.getRole() == Role.MEMBER || request.getRole() == Role.MANAGER) {
             role = request.getRole();
@@ -52,4 +54,9 @@ public class Member {
         workStartDate = request.getWorkStartDate();
     }
 
+    public void setTeam(Team team){
+        this.teamId = team;
+        team.getMembers().add(this);
+        team.setMemberCount();
+    }
 }

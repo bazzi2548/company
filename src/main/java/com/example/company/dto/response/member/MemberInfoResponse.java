@@ -16,7 +16,7 @@ public class MemberInfoResponse {
 
     public MemberInfoResponse(Member member) {
         this.name = member.getName();
-        this.teamName = member.getTeamName();
+        this.teamName = member.getTeamId().getName();
         this.role = member.getRole();
         this.birthDay = member.getBirthday();
         this.workStartDate = member.getWorkStartDate();

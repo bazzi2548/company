@@ -4,6 +4,9 @@ import com.example.company.dto.request.team.TeamRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 public class Team {
@@ -21,6 +24,9 @@ public class Team {
 
     private int memberCount;
 
+    @OneToMany(mappedBy = "teamId")
+    private List<Member> members = new ArrayList<>();
+
     protected Team() {
     }
 
@@ -35,6 +41,6 @@ public class Team {
     }
 
     public void setMemberCount() {
-        this.memberCount++;
+        memberCount = members.size();
     }
 }
